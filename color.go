@@ -48,7 +48,6 @@ const escape = "\x1b"
 const (
 	Reset Attribute = iota
 	Bold
-	Faint
 	Italic
 	Underline
 	BlinkSlow
@@ -59,6 +58,7 @@ const (
 )
 
 // Foreground text colors
+const FgFaint Attribute = 2
 const (
 	FgBlack Attribute = iota + 30
 	FgRed
@@ -494,6 +494,10 @@ func Cyan(format string, a ...interface{}) { colorPrint(format, FgCyan, a...) }
 // newline is appended to format by default.
 func White(format string, a ...interface{}) { colorPrint(format, FgWhite, a...) }
 
+// Faint is a convenient helper function to print with faint foreground. A
+// newline is appended to format by default.
+func Faint(format string, a ...interface{}) { colorPrint(format, FgFaint, a...) }
+
 // BlackString is a convenient helper function to return a string with black
 // foreground.
 func BlackString(format string, a ...interface{}) string { return colorString(format, FgBlack, a...) }
@@ -527,6 +531,10 @@ func CyanString(format string, a ...interface{}) string { return colorString(for
 // WhiteString is a convenient helper function to return a string with white
 // foreground.
 func WhiteString(format string, a ...interface{}) string { return colorString(format, FgWhite, a...) }
+
+// FaintString is a convenient helper function to return a string with faint
+// foreground.
+func FaintString(format string, a ...interface{}) string { return colorString(format, FgFaint, a...) }
 
 // HiBlack is a convenient helper function to print with hi-intensity black foreground. A
 // newline is appended to format by default.

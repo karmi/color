@@ -30,6 +30,7 @@ func TestColor(t *testing.T) {
 		{text: "magent", code: FgMagenta},
 		{text: "cyan", code: FgCyan},
 		{text: "white", code: FgWhite},
+		{text: "faint", code: FgFaint},
 		{text: "hblack", code: FgHiBlack},
 		{text: "hred", code: FgHiRed},
 		{text: "hgreen", code: FgHiGreen},
@@ -119,6 +120,7 @@ func TestNoColor(t *testing.T) {
 		{text: "magent", code: FgMagenta},
 		{text: "cyan", code: FgCyan},
 		{text: "white", code: FgWhite},
+		{text: "faint", code: FgFaint},
 		{text: "hblack", code: FgHiBlack},
 		{text: "hred", code: FgHiRed},
 		{text: "hgreen", code: FgHiGreen},
@@ -188,6 +190,10 @@ func TestColorVisual(t *testing.T) {
 	New(FgWhite).Printf("white\t")
 	New(BgWhite).Print("         ")
 	New(FgWhite, Bold).Println(" white")
+
+	New(FgFaint).Printf("faint\t")
+	fmt.Print("         ")
+	New(FgFaint, Bold).Println(" faint")
 	fmt.Println("")
 
 	// Second Visual test
@@ -199,6 +205,7 @@ func TestColorVisual(t *testing.T) {
 	Magenta("magenta")
 	Cyan("cyan")
 	White("white")
+	Faint("faint")
 	HiBlack("hblack")
 	HiRed("hred")
 	HiGreen("hgreen")
@@ -248,6 +255,7 @@ func TestColorVisual(t *testing.T) {
 	fmt.Fprintln(Output, MagentaString("magenta"))
 	fmt.Fprintln(Output, CyanString("cyan"))
 	fmt.Fprintln(Output, WhiteString("white"))
+	fmt.Fprintln(Output, FaintString("faint"))
 	fmt.Fprintln(Output, HiBlackString("hblack"))
 	fmt.Fprintln(Output, HiRedString("hred"))
 	fmt.Fprintln(Output, HiGreenString("hgreen"))
@@ -282,6 +290,9 @@ func TestNoFormat(t *testing.T) {
 
 	fmt.Printf("%s   %%s = ", WhiteString("White"))
 	White("%s")
+
+	fmt.Printf("%s   %%s = ", FaintString("Faint"))
+	Faint("%s")
 
 	fmt.Printf("%s   %%s = ", HiBlackString("HiBlack"))
 	HiBlack("%s")
@@ -323,6 +334,7 @@ func TestNoFormatString(t *testing.T) {
 		{MagentaString, "%s", nil, "\x1b[35m%s\x1b[0m"},
 		{CyanString, "%s", nil, "\x1b[36m%s\x1b[0m"},
 		{WhiteString, "%s", nil, "\x1b[37m%s\x1b[0m"},
+		{FaintString, "%s", nil, "\x1b[2m%s\x1b[0m"},
 		{HiBlackString, "%s", nil, "\x1b[90m%s\x1b[0m"},
 		{HiRedString, "%s", nil, "\x1b[91m%s\x1b[0m"},
 		{HiGreenString, "%s", nil, "\x1b[92m%s\x1b[0m"},
